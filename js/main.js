@@ -16,7 +16,7 @@ let carouselTimer = null;
 
 function buildShots(){
   for(let i = 1; i <= SHOT_COUNT; i++){
-    const src = `assets/screenshots/${i}.jpeg`;
+    const src = `assets/screenshots/${i}.webp`;
     shots.push(src);
 
     const img = document.createElement('img');
