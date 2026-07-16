@@ -1,10 +1,10 @@
 // ==========================================================
 // BANTUIN — halaman unduh — main.js
 // ==========================================================
-const APK_PATH = 'https://drive.google.com/file/d/1ZZMUxrwGWUy8OiMFY74b2VwbNAIb0GQo/view?usp=drive_link';
+const APK_PATH = 'Bantuin.apk'; // file APK ada langsung di root project ini
 const APK_NAME = 'Bantuin.apk';
 const SHOT_COUNT = 10;
-const STATS_ROW_ID = 'bantuin_v1'; // baris di tabel public.app_stats
+const STATS_ROW_ID = 'bantuin_v1'; // key node di Realtime Database: app_stats/bantuin_v1
 
 // ---------------- Screenshot carousel (mockup ponsel) ----------------
 const screen = document.getElementById('phoneScreen');
@@ -110,26 +110,28 @@ function formatCount(n){
   return String(n);
 }
 
+const downloadsRef = (typeof fbDb !== 'undefined')
+  ? fbDb.ref('app_stats/' + STATS_ROW_ID + '/downloads')
+  : null;
+
 async function loadDownloadCount(){
   const el = document.getElementById('specDownloads');
+  if(!downloadsRef){ el.textContent = '0'; return; }
   try{
-    const { data, error } = await sb
-      .from('app_stats')
-      .select('downloads')
-      .eq('id', STATS_ROW_ID)
-      .maybeSingle();
-    if(error || !data){ el.textContent = '0'; return; }
-    el.textContent = formatCount(data.downloads);
+    const snap = await downloadsRef.get();
+    const val = snap.exists() ? snap.val() : 0;
+    el.textContent = formatCount(val);
   }catch(err){
     el.textContent = '0';
   }
 }
 
 async function incrementDownloadCount(){
+  if(!downloadsRef) return;
   try{
-    const { data, error } = await sb.rpc('increment_downloads', { row_id: STATS_ROW_ID });
-    if(!error && typeof data === 'number'){
-      document.getElementById('specDownloads').textContent = formatCount(data);
+    const result = await downloadsRef.transaction(current => (current || 0) + 1);
+    if(result.committed){
+      document.getElementById('specDownloads').textContent = formatCount(result.snapshot.val());
     }
   }catch(err){
     // gagal diam-diam, tidak mengganggu proses unduh
