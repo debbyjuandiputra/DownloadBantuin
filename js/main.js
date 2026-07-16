@@ -1,7 +1,7 @@
 // ==========================================================
 // BANTUIN — halaman unduh — main.js
 // ==========================================================
-const APK_PATH = 'https://github.com/USERNAME/REPO/releases/download/v1.0/Bantuin.apk';
+const APK_PATH = 'https://drive.google.com/file/d/1ZZMUxrwGWUy8OiMFY74b2VwbNAIb0GQo/view?usp=drive_link';
 const APK_NAME = 'Bantuin.apk';
 const SHOT_COUNT = 10;
 const STATS_ROW_ID = 'bantuin_v1'; // baris di tabel public.app_stats
