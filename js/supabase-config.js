@@ -9,6 +9,6 @@
 // ==========================================================
 
 const SUPABASE_URL = "https://kubydmxgxmvyksyywypi.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_7u8paXqdYLcZan5LohB4mA_VR1_WS8n";
+const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt1YnlkbXhneG12eWtzeXl3eXBpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM4MDI1MjYsImV4cCI6MjA5OTM3ODUyNn0.jxafJG54SUeKWc5SL3ORvSzEQIHHmmTzuvia2Boy5cAWS8n";
 
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
