@@ -80,7 +80,7 @@ img{max-width:100%;display:block;}
 
 /* HERO */
 .hero{
-  padding:72px 0 40px;
+  padding:0 0 72px 40px;
 }
 .hero-grid{
   display:grid;
