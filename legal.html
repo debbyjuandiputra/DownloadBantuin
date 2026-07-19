@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kebijakan Privasi & Syarat Penggunaan — Bantuin</title>
+<link rel="icon" type="image/webp" href="assets/favicon.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .page-header {
+    padding: 48px 0 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .page-header .badge {
+    display: inline-flex;align-items:center;gap:6px;
+    background:var(--orange-light);color:var(--orange-dark);
+    border-radius:999px;padding:5px 13px;
+    font-size:12.5px;font-weight:600;margin-bottom:14px;
+  }
+  [data-theme="dark"] .page-header .badge{color:var(--orange);}
+  .page-header h1 {
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 700;letter-spacing: -.02em;
+    margin: 0 0 10px;
+  }
+  .page-header p {
+    color: var(--text-muted);font-size:14.5px;margin:0;
+  }
+
+  .tabs {
+    display: flex;gap:6px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:6px;
+    margin-bottom:32px;
+    width:fit-content;
+  }
+  .tab-btn {
+    padding:9px 20px;border-radius:10px;border:none;
+    background:transparent;cursor:pointer;
+    font-size:14px;font-weight:600;
+    color:var(--text-muted);
+    transition:background .2s, color .2s;
+    font-family:'Inter',sans-serif;
+  }
+  .tab-btn.active {
+    background:var(--orange);color:#fff;
+  }
+
+  .tab-panel { display:none; }
+  .tab-panel.active { display:block; }
+
+  .toc {
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:22px 24px;
+    margin-bottom:28px;
+  }
+  .toc-title {
+    font-size:12px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--text-muted);
+    margin-bottom:12px;
+  }
+  .toc ol {
+    margin:0;padding-left:18px;
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:4px 16px;
+  }
+  .toc li { font-size:13.5px; }
+  .toc a { color:var(--orange-dark);font-weight:500; }
+  [data-theme="dark"] .toc a{color:var(--orange);}
+  .toc a:hover { text-decoration:underline; }
+
+  .doc-section {
+    border-bottom:1px solid var(--border);
+    padding:28px 0;
+  }
+  .doc-section:last-child { border-bottom:none; }
+  .doc-section .num {
+    display:inline-block;
+    font-size:11px;font-weight:700;letter-spacing:.07em;
+    text-transform:uppercase;color:var(--orange-dark);
+    background:var(--orange-light);
+    border-radius:6px;padding:3px 9px;
+    margin-bottom:10px;
+  }
+  [data-theme="dark"] .doc-section .num{color:var(--orange);}
+  .doc-section h2 {
+    font-size:17px;font-weight:700;margin:0 0 10px;letter-spacing:-.01em;
+  }
+  .doc-section p {
+    color:var(--text-muted);font-size:15px;line-height:1.75;margin:0 0 10px;
+  }
+  .doc-section p:last-child{margin-bottom:0;}
+  .doc-section ul {
+    margin:8px 0 0;padding-left:20px;
+    color:var(--text-muted);font-size:15px;line-height:1.8;
+  }
+
+  .privacy-note {
+    background:var(--orange-light);
+    border-left:3px solid var(--orange);
+    border-radius:0 12px 12px 0;
+    padding:18px 20px;
+    margin-bottom:24px;
+  }
+  [data-theme="dark"] .privacy-note{background:var(--orange-light);}
+  .privacy-note p {
+    color:var(--text);font-size:14.5px;line-height:1.7;margin:0;
+  }
+
+  .back-link {
+    display:inline-flex;align-items:center;gap:6px;
+    color:var(--text-muted);font-size:14px;font-weight:500;
+    margin-bottom:28px;
+    transition:color .2s;
+  }
+  .back-link:hover{color:var(--orange);}
+  .back-link svg{width:16px;height:16px;}
+
+  @media(max-width:600px){
+    .toc ol{grid-template-columns:1fr;}
+    .tabs{width:100%;}
+    .tab-btn{flex:1;text-align:center;padding:9px 10px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="index.html">Bantuin<span class="brand-dot">.</span></a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Ganti mode tampilan">
+      <span class="knob" id="themeIcon">☀️</span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <!-- <span class="badge">📄 Dokumen resmi</span> -->
+      <h1>Kebijakan Privasi &amp; Syarat Penggunaan</h1>
+      <p>Terakhir diperbarui: 19 Juli 2025 &nbsp;·&nbsp; Berlaku untuk seluruh pengguna aplikasi Bantuin</p>
+    </div>
+
+    <a class="back-link" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>
+      Kembali ke Beranda
+    </a>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('syarat')">Syarat Penggunaan</button>
+      <button class="tab-btn" onclick="switchTab('privasi')">Kebijakan Privasi</button>
+    </div>
+
+    <!-- SYARAT PENGGUNAAN -->
+    <div class="tab-panel active" id="tab-syarat">
+      <div class="toc">
+        <div class="toc-title">Daftar isi</div>
+        <ol>
+          <li><a href="#s1">Penggunaan Layanan</a></li>
+          <li><a href="#s2">Akun Pengguna</a></li>
+          <li><a href="#s3">Data Profil Tambahan</a></li>
+          <li><a href="#s4">Promo Canva Pro 1 Hari</a></li>
+          <li><a href="#s5">Fitur Catatan</a></li>
+          <li><a href="#s6">Fitur Kunci Authenticator</a></li>
+          <li><a href="#s7">Kewajiban Pengguna</a></li>
+          <li><a href="#s8">Hak Pengembang</a></li>
+          <li><a href="#s9">Hak Kekayaan Intelektual</a></li>
+          <li><a href="#s10">Batasan Tanggung Jawab</a></li>
+          <li><a href="#s11">Perubahan Layanan</a></li>
+          <li><a href="#s12">Penghentian Akun</a></li>
+          <li><a href="#s13">Perubahan Syarat</a></li>
+          <li><a href="#s14">Hukum yang Berlaku</a></li>
+        </ol>
+      </div>
+
+      <p style="color:var(--text-muted);font-size:14.5px;margin-bottom:24px;line-height:1.7;">
+        Dengan menggunakan aplikasi ini — baik sebagai tamu maupun dengan membuat akun — Anda dianggap telah membaca, memahami, dan menyetujui seluruh syarat dan ketentuan berikut.
+      </p>
+
+      <div class="doc-section" id="s1">
+        <span class="num">01</span>
+        <h2>Penggunaan Layanan</h2>
+        <p>Aplikasi ini menyediakan berbagai alat bantu bagi siswa, mahasiswa, dan pengguna umum, seperti konversi file, cek karakter, catatan pribadi, encode/decode, generator UUID, generator kode autentikator, serta fitur lainnya. Sebagian besar fitur dapat langsung digunakan tanpa membuat akun (mode tamu).</p>
+      </div>
+
+      <div class="doc-section" id="s2">
+        <span class="num">02</span>
+        <h2>Akun Pengguna (Opsional)</h2>
+        <p>Pembuatan akun bersifat opsional dan diperlukan untuk fitur tertentu seperti Catatan, Kunci Authenticator, dan klaim promo Canva Pro 1 Hari. Pengguna bertanggung jawab atas kerahasiaan username yang dimilikinya, karena username adalah satu-satunya identitas untuk masuk ke akun — aplikasi ini tidak menggunakan password.</p>
+        <p>Pengguna wajib menggunakan username miliknya sendiri dan tidak menggunakan identitas milik orang lain tanpa izin.</p>
+      </div>
+
+      <div class="doc-section" id="s3">
+        <span class="num">03</span>
+        <h2>Data Profil Tambahan (Opsional)</h2>
+        <p>Setelah masuk, pengguna dapat menambahkan Nama Lengkap dan Email secara opsional melalui menu Edit Profil. Data ini tidak wajib diisi dan hanya digunakan untuk keperluan yang berkaitan dengan akun Anda, seperti identifikasi pada saat klaim promo.</p>
+      </div>
+
+      <div class="doc-section" id="s4">
+        <span class="num">04</span>
+        <h2>Promo Canva Pro 1 Hari</h2>
+        <p>Pengguna yang sudah masuk dapat mengajukan klaim promo Canva Pro 1 Hari dengan memasukkan email Canva miliknya. Satu email hanya berhak melakukan klaim sebanyak satu kali. Email yang sudah pernah dipakai untuk klaim tidak dapat digunakan kembali.</p>
+      </div>
+
+      <div class="doc-section" id="s5">
+        <span class="num">05</span>
+        <h2>Fitur Catatan</h2>
+        <p>Pengguna yang sudah masuk dapat menulis, menyimpan, mengedit, menghapus, menyematkan (pin), dan mengurutkan Catatan pribadi. Judul wajib diisi, isi dapat diformat tebal/miring/garis bawah/daftar.</p>
+        <p>Catatan disimpan di server menggunakan enkripsi sederhana sehingga isinya tidak tersimpan sebagai teks polos. Pengguna juga dapat mengekspor Catatan miliknya ke format .txt, .md, atau .docx.</p>
+      </div>
+
+      <div class="doc-section" id="s6">
+        <span class="num">06</span>
+        <h2>Fitur Kunci Authenticator</h2>
+        <p>Pengguna yang sudah masuk dapat menyimpan, mengedit, menghapus, dan mengurutkan kunci rahasia TOTP (untuk generate kode OTP). Kunci tersebut dienkripsi sebelum disimpan di server.</p>
+        <p>Pengguna bertanggung jawab penuh atas kunci yang disimpan dan disarankan untuk tidak menyimpan kunci akun-akun yang sangat sensitif di layanan pihak ketiga manapun, termasuk aplikasi ini.</p>
+      </div>
+
+      <div class="doc-section" id="s7">
+        <span class="num">07</span>
+        <h2>Kewajiban Pengguna</h2>
+        <p>Pengguna dilarang:</p>
+        <ul>
+          <li>Menggunakan aplikasi untuk kegiatan yang melanggar hukum.</li>
+          <li>Menyalahgunakan layanan sehingga mengganggu pengguna lain.</li>
+          <li>Mencoba memperoleh akses tanpa izin ke sistem aplikasi.</li>
+          <li>Menyebarkan malware, virus, atau kode berbahaya melalui layanan.</li>
+        </ul>
+      </div>
+
+      <div class="doc-section" id="s8">
+        <span class="num">08</span>
+        <h2>Hak Pengembang</h2>
+        <p>Pengembang berhak:</p>
+        <ul>
+          <li>Memperbarui atau menghentikan fitur tertentu.</li>
+          <li>Menangguhkan atau menghapus akun yang terbukti melanggar ketentuan.</li>
+          <li>Melakukan pemeliharaan sistem sewaktu-waktu.</li>
+        </ul>
+      </div>
+
+      <div class="doc-section" id="s9">
+        <span class="num">09</span>
+        <h2>Hak Kekayaan Intelektual</h2>
+        <p>Seluruh hak cipta, desain, logo, ikon, serta konten aplikasi merupakan milik pengembang (DebDev) atau pihak yang memberikan izin penggunaannya. Pengguna tidak diperbolehkan menyalin, memodifikasi, atau mendistribusikan bagian aplikasi tanpa izin.</p>
+      </div>
+
+      <div class="doc-section" id="s10">
+        <span class="num">10</span>
+        <h2>Batasan Tanggung Jawab</h2>
+        <p>Aplikasi disediakan sebagaimana adanya. Pengembang tidak bertanggung jawab atas kerugian yang timbul akibat penggunaan aplikasi, kehilangan data, gangguan layanan, maupun kesalahan yang berasal dari perangkat atau jaringan pengguna.</p>
+      </div>
+
+      <div class="doc-section" id="s11">
+        <span class="num">11</span>
+        <h2>Perubahan Layanan</h2>
+        <p>Fitur dalam aplikasi dapat ditambah, diubah, atau dihapus sewaktu-waktu tanpa pemberitahuan terlebih dahulu.</p>
+      </div>
+
+      <div class="doc-section" id="s12">
+        <span class="num">12</span>
+        <h2>Penghentian Akun</h2>
+        <p>Pengembang dapat menonaktifkan akun yang melanggar syarat penggunaan atau ketentuan hukum yang berlaku.</p>
+      </div>
+
+      <div class="doc-section" id="s13">
+        <span class="num">13</span>
+        <h2>Perubahan Syarat dan Ketentuan</h2>
+        <p>Syarat dan Ketentuan ini dapat diperbarui sewaktu-waktu. Versi terbaru akan tersedia di dalam aplikasi.</p>
+      </div>
+
+      <div class="doc-section" id="s14">
+        <span class="num">14</span>
+        <h2>Hukum yang Berlaku</h2>
+        <p>Syarat dan Ketentuan ini diatur sesuai dengan hukum yang berlaku di Republik Indonesia.</p>
+      </div>
+    </div>
+
+    <!-- KEBIJAKAN PRIVASI -->
+    <div class="tab-panel" id="tab-privasi">
+
+      <div class="privacy-note">
+        <p>Sebagian besar fitur aplikasi ini dapat dipakai tanpa membuat akun (mode tamu) dan tanpa data pribadi apa pun.</p>
+      </div>
+
+      <div class="doc-section">
+        <span class="num">Akun</span>
+        <h2>Username &amp; Identitas</h2>
+        <p>Jika Anda memilih membuat akun, Anda hanya perlu username — tanpa password. Username Anda diubah menjadi kode acak satu arah (hash) sebelum dikirim ke server, sehingga pengembang tidak dapat melihat username asli Anda. Sistem menyimpan kode acak tersebut, sebuah UID publik 7 digit, dan tanggal akun dibuat, menggunakan layanan Supabase.</p>
+        <p>Karena tidak menggunakan password, akun ini bersifat identitas ringan — siapa pun yang mengetik ulang username yang sama dapat masuk sebagai akun tersebut. Jangan gunakan username yang mudah ditebak jika Anda ingin menjaga privasi akun Anda.</p>
+      </div>
+
+      <div class="doc-section">
+        <span class="num">Profil</span>
+        <h2>Nama &amp; Email (Opsional)</h2>
+        <p>Nama Lengkap dan Email bersifat opsional dan hanya tersimpan jika Anda mengisinya sendiri melalui menu Edit Profil. Data ini disimpan apa adanya (tidak di-hash) karena dipakai untuk keperluan identifikasi terkait akun Anda, misalnya klaim promo.</p>
+      </div>
+
+      <div class="doc-section">
+        <span class="num">Promo</span>
+        <h2>Email Klaim Promo</h2>
+        <p>Jika Anda mengajukan klaim promo Canva Pro 1 Hari, email Canva yang Anda masukkan akan disimpan untuk memastikan satu email hanya dapat mengklaim promo tersebut satu kali.</p>
+      </div>
+
+      <div class="doc-section">
+        <span class="num">Statistik</span>
+        <h2>Pencatatan Aktivitas</h2>
+        <p>Untuk pengguna yang sudah masuk, aplikasi mencatat fitur mana saja yang Anda klik beserta waktunya, semata-mata untuk keperluan statistik penggunaan aplikasi. Pencatatan ini tidak berlaku untuk pengguna yang belum masuk (tamu).</p>
+      </div>
+
+      <div class="doc-section">
+        <span class="num">Enkripsi</span>
+        <h2>Catatan &amp; Kunci Authenticator</h2>
+        <p>Jika Anda menggunakan fitur Catatan, judul dan isi catatan dienkripsi (AES-GCM) sebelum dikirim dan disimpan di server — tidak tersimpan sebagai teks polos. Hal yang sama berlaku untuk kunci TOTP di fitur Kunci Authenticator.</p>
+        <p>Perlu diketahui: kunci enkripsi diturunkan dari UID publik akun Anda yang tertanam di dalam kode aplikasi — bukan dari rahasia yang hanya Anda ketahui. Enkripsi ini melindungi data dari pihak luar, bukan proteksi tingkat produksi terhadap pengembang aplikasi itu sendiri. Anda dapat mengekspor Catatan ke file .txt, .md, atau .docx kapan saja sebagai cadangan pribadi.</p>
+      </div>
+
+      <div class="doc-section">
+        <span class="num">Lokal</span>
+        <h2>Penyimpanan di Perangkat</h2>
+        <p>Sebagian preferensi tampilan (seperti mode terang/gelap) disimpan secara lokal di perangkat (local storage) karena tidak memerlukan sinkronisasi ke akun Anda.</p>
+      </div>
+
+      <div class="doc-section">
+        <span class="num">Hapus Data</span>
+        <h2>Permintaan Penghapusan Data</h2>
+        <p>Dengan menggunakan aplikasi ini, Anda menyetujui penyimpanan data sebagaimana dijelaskan di atas. Anda dapat menghubungi pengembang melalui menu Kontak apabila ingin data akun Anda dihapus dari sistem.</p>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-brand">© 2026 Bantuin</div>
+      <div class="footer-muted">Kotak perkakas digital untuk aktivitas harianmu.</div>
+    </div>
+    <div class="social-links">
+      <a href="mailto:bantuin.help@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg>
+      </a>
+      <a href="https://www.instagram.com/bantuin_app?igsh=bmkzNG5zem5vMmt6" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      </a>
+      <a href="https://whatsapp.com/channel/0029VbDcI9Y9hXFD3uYyOZ2n" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.55L3 20l1.05-5.4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 9.5c0 3.5 2.5 6 6 6"/></svg>
+      </a>
+      <a href="https://debbyjuandiputra.github.io/sosmed/" target="_blank" rel="noopener" aria-label="Developer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', ['syarat','privasi'][i] === id);
+  });
+  document.querySelectorAll('.tab-panel').forEach(p => {
+    p.classList.toggle('active', p.id === 'tab-' + id);
+  });
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
+</body>
+</html>
